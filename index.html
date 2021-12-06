@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reto5</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+</head>
+<body>
+    <aside class="p-3 bg-dark">
+        <h3 class="header-text text-muted"> SELECCIONA UNA OPCIÓN</h3>
+        <nav>
+            <ul>
+                <li>
+                    <a href="#" onclick="toggleSection('category')" class="text-white">categorias</a>
+                </li>
+                <li>
+                    <a href="#" onclick="toggleSection('costume')" class="text-white">Disfraces</a>
+                </li>
+                <li>
+                    <a href="#" onclick="toggleSection('client')" class="text-white">Usuarios</a>        
+                </li>
+                <li>
+                    <a href="#" onclick="toggleSection('message')" class="text-white">Mensajes</a>
+                </li>
+                <li>
+                    <a href="#" onclick="toggleSection('reservation')" class="text-white">Reservaciones</a>
+                </li>
+                <li>
+                    <a href="#" onclick="toggleSection('reservation_dates', false)" class="text-white">Reservaciones por fechas</a>
+                </li>
+                <li>
+                    <a href="#" onclick="toggleSection('reservation_count', false)" class="text-white">Contador de reservaciones</a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+    
+    <div class="wrap p-3">
+        <h3 id="title"></h3>
+        <div class="section section-category row">
+            <div class="col-12"><h3>Categorias</h3></div>
+            <div class="form-group col-4 inputs">
+
+                <label for="">Id:</label>
+                <input type="number" id="id_category"          class="form-control">
+                <label for="">Nombre:</label>
+                <input type="text"   id="name_category"        class="form-control">
+                <label for="">Descripción:</label>
+                <input type="text" id="description_category" class="form-control">
+
+                <button onclick="saveItem()" class="btn btn-success mt-2">guardar categoría</button>
+            </div>
+            <div class="col-6">
+                <table class="table table-responsive table-category">
+                    <thead>
+                      <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col"> - </th>
+                      </tr>
+                    </thead>
+                    <tbody id="tbody-category">
+                        
+                    </tbody>
+                </table>  
+            </div>
+        </div>
+
+        <div class="section section-costume row">
+            <div class="col-12"><h3>Disfraces</h3></div>
+            <div class="form-group col-4 inputs">
+
+                <label for="">Id:</label>
+                <input type="number" id="id_costume"          class="form-control">
+                <label for="">Nombre:</label>
+                <input type="text"   id="name_costume"        class="form-control">
+                <label for="">Marca:</label>
+                <input type="text"   id="brand_costume"       class="form-control">
+                <label for="">Modelo:</label>
+                <input type="number" id="year_costume"       class="form-control">
+                <label for="">Descripción:</label>
+                <input type="text" id="description_costume" class="form-control">
+
+                <label for="">Categoría:</label>
+                <input type="number" id="category_id_costume" class="form-control">     
+    
+                <button onclick="saveItem()" class="btn btn-success mt-2">guardar disfraz</button>
+            </div>
+            <div class="col-6">
+                <table class="table table-responsive table-costume">
+                    <thead>
+                      <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Marca</th>
+                        <th scope="col">Modelo</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Categoría</th>
+                        <th scope="col"> - </th>
+                      </tr>
+                    </thead>
+                    <tbody id="tbody-costume">
+                        
+                    </tbody>
+                </table>  
+            </div>
+        </div>
+    
+        <div class="section section-client row">
+            <div class="col-12"><h3>Cliente</h3></div>
+            <div class="form-group col-4 inputs">
+                <label for="">Id:</label>
+                <input type="number" id="idClient_client"     class="form-control">
+                <label for="">Nombre:</label>
+                <input type="text"   id="name_client"   class="form-control">
+                <label for="">Email:</label>
+                <input type="email"  id="email_client"  class="form-control">
+                <label for="">Contraseña:</label>
+                <input type="email"  id="password_client"  class="form-control">
+                <label for="">Edad:</label>
+                <input type="number" id="age_client"    class="form-control">
+    
+                <button onclick="saveItem()" class="btn btn-success mt-2">registrar usuario</button>
+            </div>
+            <div class="col-6">
+                <table class="table table-responsive table-client">
+                    <thead>
+                      <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Contraseña</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Edad</th>
+                        <th scope="col"> - </th>
+                      </tr>
+                    </thead>
+                    <tbody id="tbody-client">
+                        
+                    </tbody>
+                </table>  
+            </div>
+        </div>
+        
+        <div class="section section-message row">
+            
+            <div class="col-12"><h3>Mensajes</h3></div>
+            <div class="form-group col-4 inputs">
+                <label for="">Id:</label>
+                <input type="number" id="idMessage_message"          class="form-control">
+                <label for="">Texto:</label>
+                <input type="text"   id="messageText_message" class="form-control">
+                
+                <button onclick="saveItem()" class="btn btn-success mt-2">guardar mensaje</button>
+            </div>
+            <div class="col-6">
+                <table class="table table-responsive table-message">
+                    <thead>
+                      <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Texto</th>
+                        <th scope="col"> - </th>
+                      </tr>
+                    </thead>
+                    <tbody id="tbody-message">
+
+                    </tbody>
+                </table>    
+            </div>
+        </div>
+
+        <div class="section section-reservation row">
+            <div class="col-12"><h3>Reservaciones</h3></div>
+            <div class="form-group col-4 inputs">
+
+                <label for="">Id:</label>
+                <input type="number" id="idReservation_reservation" class="form-control" readonly>
+                <label for="">Fecha de inicio:</label>
+                <input type="date" id="startDate_reservation" class="form-control"> 
+                <label for="">Fecha de devolución:</label>
+                <input type="date" id="devolutionDate_reservation" class="form-control"> 
+                <label for="">Estado:</label>
+                <!-- <input type="text" id="status_reservation" class="form-control"> -->
+                
+                <select name="status" id="status_reservation" class="form-control">
+                    <option value="completed">Completada</option>
+                    <option value="cancelled">Cancelada</option>
+                  </select>
+
+                <button onclick="saveItem()" class="btn btn-success mt-2">guardar reservación</button>
+            </div>
+            <div class="col-6">
+                <table class="table table-responsive table-reservation">
+                    <thead>
+                      <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Fecha inicio</th>
+                        <th scope="col">Fecha devolución</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col"> - </th>
+                      </tr>
+                    </thead>
+                    <tbody id="tbody-reservation">
+
+                    </tbody>
+                </table>    
+            </div>
+        </div>
+        
+        <div class="section section-reservation_dates row">
+            <div class="col-12"><h3>Consulta reservaciones</h3></div>
+            <div class="form-group col-4 inputs">
+
+                <label for="">Fecha inicio:</label>
+                <input type="date" id="startDate_reservation_dates" class="form-control"> 
+                <label for="">Fecha fin:</label>
+                <input type="date" id="endDate_reservation_dates" class="form-control"> 
+
+                <button onclick="getReservationByDates()" class="btn btn-success mt-2">buscar</button>
+            </div>
+            <div class="col-6">
+                <table class="table table-responsive table-reservation">
+                    <thead>
+                      <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Fecha inicio</th>
+                        <th scope="col">Fecha devolución</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col"> - </th>
+                      </tr>
+                    </thead>
+                    <tbody id="tbody-reservation_dates">
+
+                    </tbody>
+                </table>    
+            </div>
+        </div>
+
+        <div class="section section-reservation_count row">
+            <div class="col-12"><h3>Consulta reservaciones</h3></div>
+            <div class="form-group col-4 inputs">
+
+                <label for="">N° de reservaciones completadas:</label>
+                <input type="number" id="count_completed_reservation_count" class="form-control" readonly="readonly"> 
+                <label for="">N° de reservaciones canceladas:</label>
+                <input type="number" id="count_cancelled_reservation_count" class="form-control" readonly="readonly"> 
+
+                <button onclick="getReservationCount()" class="btn btn-success mt-2">Obtener contador</button>
+            </div>
+           
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="script.js"></script>
+</body>
+</html>
